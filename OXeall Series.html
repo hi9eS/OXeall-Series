@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Мой Сериал</title>
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Arial;
+        background: #121212;
+        color: #fff;
+    }
+
+    header {
+        background: #1f1f1f;
+        padding: 20px;
+        font-size: 26px;
+        font-weight: 700;
+        text-align: center;
+        letter-spacing: 1px;
+        box-shadow: 0 0 10px #000;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    button {
+        background: #e50914;
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 15px;
+        transition: 0.15s;
+    }
+
+    button:hover {
+        background: #b00710;
+    }
+
+    .season {
+        background: #1c1c1c;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 8px;
+        border-left: 4px solid #e50914;
+    }
+
+    .season input {
+        width: 70%;
+        background: #2b2b2b;
+        color: #fff;
+        border: none;
+        padding: 8px;
+        font-size: 17px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .episode {
+        background: #232323;
+        padding: 10px;
+        margin: 10px 0 10px 20px;
+        border-radius: 6px;
+    }
+
+    .episode input {
+        width: 60%;
+        background: #333;
+        color: #fff;
+        border: none;
+        padding: 6px;
+        font-size: 15px;
+        border-radius: 5px;
+    }
+</style>
+</head>
+<body>
+
+<header>Мой сериал</header>
+
+<div class="container">
+    <button onclick="addSeason()">➕ Добавить сезон</button>
+    <div id="seasons"></div>
+</div>
+
+<script>
+let seasonCount = 0;
+
+function addSeason() {
+    seasonCount++;
+
+    let season = document.createElement("div");
+    season.className = "season";
+
+    season.innerHTML = `
+        <input value="Сезон ${seasonCount}">
+        <br>
+        <button onclick="addEpisode(this)">+ Добавить серию</button>
+        <div class="episodes"></div>
+    `;
+
+    document.getElementById("seasons").appendChild(season);
+}
+
+function addEpisode(btn) {
+    let episodesBlock = btn.parentElement.querySelector(".episodes");
+    let epCount = episodesBlock.children.length + 1;
+
+    let episode = document.createElement("div");
+    episode.className = "episode";
+
+    episode.innerHTML = `
+        <input value="Серия ${epCount}">
+    `;
+
+    episodesBlock.appendChild(episode);
+}
+</script>
+
+</body>
+</html>
