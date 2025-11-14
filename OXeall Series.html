@@ -1,277 +1,245 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>OXeall Series</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: #050509;
-            color: #f5f5f5;
-        }
-        header {
-            background: radial-gradient(circle at top left, #ff0048, #101019);
-            padding: 24px 16px;
-            text-align: center;
-            box-shadow: 0 0 25px rgba(0,0,0,0.7);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-        header p {
-            margin: 8px 0 0;
-            font-size: 13px;
-            opacity: 0.8;
-        }
-        .container {
-            max-width: 900px;
-            margin: 24px auto 40px;
-            padding: 0 16px;
-        }
+<meta charset="UTF-8">
+<title>OXeall Series</title>
+<style>
+    body {
+        margin: 0;
+        background: #0a0a0e;
+        font-family: 'Segoe UI', sans-serif;
+        color: #fff;
+    }
 
-        /* Блок текущей серии */
-        .current-episode {
-            background: linear-gradient(135deg, #1a1a24, #12121b);
-            border-radius: 12px;
-            padding: 16px 18px;
-            margin-bottom: 24px;
-            border: 1px solid rgba(255,255,255,0.06);
-            box-shadow: 0 10px 26px rgba(0,0,0,0.5);
-        }
-        .current-label {
-            font-size: 11px;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: #ff4d7a;
-            margin-bottom: 4px;
-        }
-        .current-title {
-            font-size: 17px;
-            margin: 4px 0;
-        }
-        .current-meta {
-            font-size: 13px;
-            opacity: 0.8;
-        }
-        .current-episode a {
-            color: #ff4d7a;
-            text-decoration: none;
-        }
-        .current-episode a:hover {
-            text-decoration: underline;
-        }
+    header {
+        background: linear-gradient(135deg, #e50914, #6e00ff);
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 0 20px #000;
+    }
 
-        /* Сезон / эпизоды */
-        .season {
-            background: #101018;
-            border-radius: 10px;
-            margin-bottom: 18px;
-            border: 1px solid rgba(255,255,255,0.05);
-            overflow: hidden;
-        }
-        .season-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            background: #181824;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-        }
-        .season-title {
-            font-size: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #e0e0e0;
-        }
-        .season-year {
-            font-size: 12px;
-            opacity: 0.7;
-        }
-        .episode-list {
-            list-style: none;
-            margin: 0;
-            padding: 6px 0 8px;
-        }
-        .episode {
-            display: flex;
-            align-items: center;
-            padding: 8px 14px;
-            border-top: 1px solid rgba(255,255,255,0.03);
-        }
-        .episode:first-child {
-            border-top: none;
-        }
-        .ep-num {
-            font-size: 12px;
-            opacity: 0.6;
-            width: 58px;
-        }
-        .ep-main {
-            flex: 1;
-        }
-        .ep-main a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .ep-main a:hover {
-            color: #ff4d7a;
-        }
-        .ep-meta {
-            font-size: 11px;
-            opacity: 0.6;
-            margin-top: 2px;
-        }
-        .ep-status {
-            font-size: 11px;
-            padding: 2px 6px;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.18);
-            margin-left: 10px;
-            opacity: 0.8;
-            white-space: nowrap;
-        }
-        .ep-status.watching {
-            border-color: #ff4d7a;
-            color: #ffadc0;
-        }
-        .ep-status.done {
-            border-color: #22c55e;
-            color: #a3ffbf;
-        }
+    header h1 {
+        font-size: 32px;
+        margin: 0;
+        letter-spacing: 1px;
+        font-weight: 700;
+    }
 
-        footer {
-            text-align: center;
-            font-size: 11px;
-            opacity: 0.45;
-            padding: 18px 0 26px;
-        }
+    header p {
+        margin: 5px 0 0 0;
+        opacity: 0.8;
+    }
 
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 22px;
-            }
-            .episode {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .ep-status {
-                margin-left: 0;
-                margin-top: 4px;
-            }
-            .ep-num {
-                margin-bottom: 3px;
-            }
-        }
-    </style>
+    .container {
+        max-width: 1000px;
+        margin: 30px auto;
+        padding: 0 20px;
+    }
+
+    /* CURRENT EPISODE */
+    .current {
+        background: #14141c;
+        border-left: 4px solid #e50914;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 35px;
+        box-shadow: 0 0 10px #000;
+    }
+
+    .current small {
+        color: #bbb;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .current h2 {
+        margin: 8px 0;
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .current .meta {
+        color: #aaa;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        display: inline-block;
+        background: #e50914;
+        padding: 10px 20px;
+        border-radius: 8px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.15s;
+    }
+
+    .btn:hover {
+        background: #b00710;
+    }
+
+    /* SEASONS */
+    .season {
+        background: #14141c;
+        margin-bottom: 25px;
+        border-radius: 10px;
+        border: 1px solid #222;
+        overflow: hidden;
+        box-shadow: 0 0 10px #000;
+    }
+
+    .season-header {
+        background: #1c1c27;
+        padding: 15px 20px;
+        border-bottom: 1px solid #222;
+    }
+
+    .season-header h3 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .episodes {
+        padding: 10px 20px 15px;
+    }
+
+    .episode {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px dashed #333;
+    }
+
+    .episode:last-child {
+        border-bottom: none;
+    }
+
+    .episode-title {
+        font-size: 16px;
+        margin-bottom: 3px;
+    }
+
+    .episode-meta {
+        font-size: 13px;
+        color: #999;
+    }
+
+    .watch {
+        color: #4da3ff;
+        border: 1px solid #4da3ff;
+        padding: 6px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: 0.2s;
+        font-size: 13px;
+        align-self: center;
+        white-space: nowrap;
+    }
+
+    .watch:hover {
+        background: #4da3ff;
+        color: #0a0a0e;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        color: #aaa;
+        border-top: 1px solid #1c1c1c;
+        margin-top: 40px;
+    }
+</style>
 </head>
 <body>
 
 <header>
     <h1>OXeall Series</h1>
-    <p>Список сезонов и эпизодов · редактируй HTML как тебе нужно</p>
+    <p>Персональный каталог сезонов и эпизодов</p>
 </header>
 
 <div class="container">
 
-    <!-- ========= ТЕКУЩАЯ СЕРИЯ ========= -->
-    <!-- Меняешь текст и ссылку под свою текущую серию -->
-    <div class="current-episode">
-        <div class="current-label">СЕЙЧАС СМОТРИШЬ</div>
-        <div class="current-title">
-            Season 1 · Episode 3 — 
-            <a href="https://example.com/your-episode-link" target="_blank">
-                Название текущей серии
-            </a>
+    <!-- ТЕКУЩАЯ СЕРИЯ -->
+    <div class="current">
+        <small>Текущая серия:</small>
+        <h2>Episode 4 — «Контрольный Точка»</h2>
+        <div class="meta">Season 1 • Episode 4 • Прогресс: смотрю</div>
+        <a class="btn" href="https://example.com/ep4" target="_blank">▶ Открыть серию</a>
+    </div>
+
+    <!-- SEASON 1 -->
+    <div class="season">
+        <div class="season-header">
+            <h3>Season 1</h3>
         </div>
-        <div class="current-meta">
-            Ты можешь сам менять этот блок и ссылку в HTML (ищи комментарий "ТЕКУЩАЯ СЕРИЯ").
+        <div class="episodes">
+
+            <div class="episode">
+                <div>
+                    <div class="episode-title">Episode 1 — «Начало пути»</div>
+                    <div class="episode-meta">S01E01</div>
+                </div>
+                <a class="watch" href="https://example.com/ep1" target="_blank">▶ Смотреть</a>
+            </div>
+
+            <div class="episode">
+                <div>
+                    <div class="episode-title">Episode 2 — «Первый вызов»</div>
+                    <div class="episode-meta">S01E02</div>
+                </div>
+                <a class="watch" href="https://example.com/ep2" target="_blank">▶ Смотреть</a>
+            </div>
+
+            <div class="episode">
+                <div>
+                    <div class="episode-title">Episode 3 — «Сигнал»</div>
+                    <div class="episode-meta">S01E03</div>
+                </div>
+                <a class="watch" href="https://example.com/ep3" target="_blank">▶ Смотреть</a>
+            </div>
+
+            <div class="episode">
+                <div>
+                    <div class="episode-title">Episode 4 — «Контрольная точка»</div>
+                    <div class="episode-meta">S01E04</div>
+                </div>
+                <a class="watch" href="https://example.com/ep4" target="_blank">▶ Смотреть</a>
+            </div>
+
         </div>
     </div>
 
-    <!-- ========= СЕЗОН 1 ========= -->
-    <!-- Копируй этот блок .season, чтобы создать новый сезон -->
+    <!-- SEASON 2 -->
     <div class="season">
         <div class="season-header">
-            <div class="season-title">Season 1</div>
-            <div class="season-year">2025</div>
+            <h3>Season 2</h3>
         </div>
-        <ul class="episode-list">
+        <div class="episodes">
 
-            <!-- ЭПИЗОД 1 -->
-            <li class="episode">
-                <div class="ep-num">EP 1</div>
-                <div class="ep-main">
-                    <!-- ССЫЛКУ МЕНЯЕШЬ САМ -->
-                    <a href="https://example.com/episode1" target="_blank">
-                        Episode 1 — Название серии
-                    </a>
-                    <div class="ep-meta">Например: пилотная серия</div>
+            <div class="episode">
+                <div>
+                    <div class="episode-title">Episode 1 — «Перезапуск»</div>
+                    <div class="episode-meta">S02E01</div>
                 </div>
-                <!-- Статус можно удалить или поменять текст -->
-                <div class="ep-status done">просмотрено</div>
-            </li>
+                <a class="watch" href="https://example.com/s2e1" target="_blank">▶ Смотреть</a>
+            </div>
 
-            <!-- ЭПИЗОД 2 -->
-            <li class="episode">
-                <div class="ep-num">EP 2</div>
-                <div class="ep-main">
-                    <a href="https://example.com/episode2" target="_blank">
-                        Episode 2 — Вторая серия
-                    </a>
-                    <div class="ep-meta">Краткий комментарий (можно стереть)</div>
+            <div class="episode">
+                <div>
+                    <div class="episode-title">Episode 2 — «Усиление»</div>
+                    <div class="episode-meta">S02E02</div>
                 </div>
-                <div class="ep-status watching">сейчас</div>
-            </li>
+                <a class="watch" href="https://example.com/s2e2" target="_blank">▶ Смотреть</a>
+            </div>
 
-            <!-- ЭПИЗОД 3 -->
-            <li class="episode">
-                <div class="ep-num">EP 3</div>
-                <div class="ep-main">
-                    <a href="https://example.com/episode3" target="_blank">
-                        Episode 3 — Третья серия
-                    </a>
-                    <div class="ep-meta">Можно оставить пустым</div>
-                </div>
-                <div class="ep-status">в планах</div>
-            </li>
-
-        </ul>
-    </div>
-
-    <!-- ========= СЕЗОН 2 (ПРИМЕР) ========= -->
-    <div class="season">
-        <div class="season-header">
-            <div class="season-title">Season 2</div>
-            <div class="season-year">2026</div>
         </div>
-        <ul class="episode-list">
-            <li class="episode">
-                <div class="ep-num">EP 1</div>
-                <div class="ep-main">
-                    <a href="https://example.com/season2-episode1" target="_blank">
-                        Episode 1 — Начало второго сезона
-                    </a>
-                    <div class="ep-meta">Этот блок — просто пример</div>
-                </div>
-                <div class="ep-status">в планах</div>
-            </li>
-        </ul>
     </div>
 
 </div>
 
-<footer>
-    OXeall Series · сделано вручную через HTML · редактируй как хочешь
-</footer>
+<footer>OXeall Series • Сделано для личного использования</footer>
 
 </body>
 </html>
